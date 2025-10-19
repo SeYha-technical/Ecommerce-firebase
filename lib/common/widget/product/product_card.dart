@@ -1,0 +1,104 @@
+import 'package:ecommerce_bloc/presentation/product_detail/pages/product_detail.dart';
+import 'package:flutter/material.dart';
+
+import '../../../core/config/theme/app_color.dart';
+import '../../../domain/product/enitites/product.dart';
+import '../../helper/image/image_display_url.dart';
+import '../../helper/navigator/app_navigator.dart';
+
+class ProductCard extends StatelessWidget {
+  final ProductEntity productEntity;
+  const ProductCard({required this.productEntity, super.key});
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        AppNavigator.push(
+          context,
+          ProductDetailPage(productEntity: productEntity),
+        );
+      },
+      child: Container(
+        width: 180,
+        decoration: BoxDecoration(
+          color: AppColors.secondBackground,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              flex: 4,
+              child: Container(
+                decoration: BoxDecoration(
+                  //color: Colors.white,
+                  //color: Colors.blueGrey,
+                  //color: Colors.teal,
+                  //color: Colors.indigo,
+                  color: Colors.pink,
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: NetworkImage(
+                      ImageDisplayHelper.generateProductImageURL(
+                        productEntity.images[0],
+                      ),
+                    ),
+                  ),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(8),
+                    topRight: Radius.circular(8),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      productEntity.title,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        overflow: TextOverflow.ellipsis,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          productEntity.discountedPrice == 0
+                              ? "${productEntity.price}\$"
+                              : "${productEntity.discountedPrice}\$",
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          productEntity.discountedPrice == 0
+                              ? ''
+                              : "${productEntity.price}\$",
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w300,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
