@@ -1,16 +1,13 @@
-# ecommerce_bloc
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Features
+🔐 Authentication
+User registration, login, and secure session management with Firebase Auth
+🛍️ Product Catalog
+Browse products with real-time updates from Firestore
+🛒 Shopping Cart
+Add/remove items, adjust quantities, and persist cart data
+💳 Checkout
+Complete orders with shipping details and order confirmation
+📦 Order History
+View past orders with details and tracking status
+🔥 Tech Stack
+Flutter bloc cubit with clean aciticture ,Firebase Auth • Cloud Firestore • 
